@@ -83,18 +83,33 @@ void terminal_put_entry_at(char c_p, uint8_t color_p, size_t x_p, size_t y_p)
 
 void terminal_put_char(char c_p) 
 {
-	if ('\n' == c_p) {
-		if (++terminal_row == VGA_HEIGHT)
-			terminal_row = 0;
+	switch (c_p) {
+	case '\n':
+		terminal_row++;
 		terminal_column = 0;
-		return;
+		break;
+	
+	default:
+		terminal_put_entry_at(c_p, terminal_color, terminal_column, terminal_row);
+		terminal_column++;
+	}
+	
+
+	if (terminal_column >= VGA_WIDTH) {
+		terminal_column = 0;
+		terminal_row++;
+	}
+	
+	if (terminal_row >= VGA_HEIGHT) {
+		for (size_t x = 0; x < VGA_WIDTH - 1; x++) {
+			for (size_t y = VGA_HEIGHT - 2; y > 0; y--) {
+				terminal_buffer[(y * VGA_WIDTH) + x] = terminal_buffer[((y + 1) * VGA_WIDTH) + x];
+			}
+		}
 	}
 
-	terminal_put_entry_at(c_p, terminal_color, terminal_column, terminal_row);
-	if (++terminal_column == VGA_WIDTH) {
-		terminal_column = 0;
-		if (++terminal_row == VGA_HEIGHT)
-			terminal_row = 0;
+	for (size_t i = 0; i < VGA_WIDTH - 1; i++) {
+		terminal_put_entry_at(' ', terminal_color, i, VGA_HEIGHT - 1);
 	}
 }
 
