@@ -4,6 +4,8 @@ telescope.setup {
     file_ignore_patterns = {
       "%.o",
       "%.d",
+      "%.a",
+      "%.kernel",
     }
   }
 }

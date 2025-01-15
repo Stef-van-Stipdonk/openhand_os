@@ -16,8 +16,8 @@ sysroot/
 *.bak
 *.tmp
 
-# Ignore compile_commands
 compile_commands.json
+.nvim.lua
 .cache/
 
 # Allow source code, configuration files, and documentation
