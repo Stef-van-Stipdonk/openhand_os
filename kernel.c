@@ -55,10 +55,15 @@ size_t terminal_column;
 uint8_t terminal_color;
 uint16_t* terminal_buffer;
 
+size_t terminal_cursor_row;
+size_t terminal_cursor_column;
+
 void terminal_initialize(void) 
 {
 	terminal_row = 0;
 	terminal_column = 0;
+	terminal_cursor_row = 0;
+	terminal_cursor_column = 0;
 	terminal_color = vga_entry_color(VGA_COLOR_LIGHT_GREY, VGA_COLOR_BLACK);
 	terminal_buffer = (uint16_t*) 0xB8000;
 
@@ -81,7 +86,14 @@ void terminal_put_entry_at(char c_p, uint8_t color_p, size_t x_p, size_t y_p)
 	terminal_buffer[index] = vga_entry(c_p, color_p);
 }
 
-void terminal_put_char(char c_p) 
+void terminal_update_cursor() {
+	terminal_buffer[(terminal_cursor_row * VGA_WIDTH) + terminal_cursor_column] &= ~(1 << 15);
+	terminal_buffer[(terminal_row * VGA_WIDTH) + terminal_column] |= (1 << 15);
+	terminal_cursor_row = terminal_row;
+	terminal_cursor_column = terminal_column;
+}
+
+void terminal_put_char(char c_p)
 {
 	switch (c_p) {
 	case '\n':
@@ -107,6 +119,8 @@ void terminal_put_char(char c_p)
 			}
 		}
 	}
+
+	terminal_update_cursor();
 }
 
 void terminal_write(const char* data_p, size_t size_p)
