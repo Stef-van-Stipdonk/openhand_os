@@ -1,0 +1,8 @@
+#!/bin/bash
+
+export PATH="$HOME/opt/cross/bin:$PATH"
+
+export TARGET="$HOME/opt/cross/bin/i686-elf"
+echo $TARGET
+
+$TARGET-gcc --version

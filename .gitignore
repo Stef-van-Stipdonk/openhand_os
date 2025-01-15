@@ -1,0 +1,26 @@
+# Ignore object files
+*.o
+
+# Ignore the built binary and ISO files
+*.bin
+*.iso
+
+# Ignore the build directory
+build/
+isodir/
+
+# Ignore temporary files and editor backups
+*.swp
+*.swo
+*~
+*.bak
+*.tmp
+
+# Ignore generated scripts or intermediate build outputs, if any
+scripts/
+
+# Allow source code, configuration files, and documentation
+!boot.s
+!kernel.c
+!linker.ld
+!README.md
