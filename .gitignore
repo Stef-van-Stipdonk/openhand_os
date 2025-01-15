@@ -1,14 +1,13 @@
 # Ignore object files
 *.o
+*.d
 
 # Ignore the built binary and ISO files
 *.bin
 *.iso
 
 # Ignore the build directory
-build/
-obj/
-bin/
+sysroot/
 
 # Ignore temporary files and editor backups
 *.swp
