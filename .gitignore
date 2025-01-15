@@ -9,7 +9,6 @@
 build/
 obj/
 bin/
-isodir/
 
 # Ignore temporary files and editor backups
 *.swp
@@ -18,8 +17,9 @@ isodir/
 *.bak
 *.tmp
 
-# Ignore generated scripts or intermediate build outputs, if any
-scripts/
+# Ignore compile_commands
+compile_commands.json
+.cache/
 
 # Allow source code, configuration files, and documentation
 !boot.s
