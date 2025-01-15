@@ -102,14 +102,10 @@ void terminal_put_char(char c_p)
 	
 	if (terminal_row >= VGA_HEIGHT) {
 		for (size_t x = 0; x < VGA_WIDTH - 1; x++) {
-			for (size_t y = VGA_HEIGHT - 2; y > 0; y--) {
+			for (size_t y = 0; y < VGA_HEIGHT; y++) {
 				terminal_buffer[(y * VGA_WIDTH) + x] = terminal_buffer[((y + 1) * VGA_WIDTH) + x];
 			}
 		}
-	}
-
-	for (size_t i = 0; i < VGA_WIDTH - 1; i++) {
-		terminal_put_entry_at(' ', terminal_color, i, VGA_HEIGHT - 1);
 	}
 }
 
