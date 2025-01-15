@@ -83,6 +83,13 @@ void terminal_put_entry_at(char c_p, uint8_t color_p, size_t x_p, size_t y_p)
 
 void terminal_put_char(char c_p) 
 {
+	if ('\n' == c_p) {
+		if (++terminal_row == VGA_HEIGHT)
+			terminal_row = 0;
+		terminal_column = 0;
+		return;
+	}
+
 	terminal_put_entry_at(c_p, terminal_color, terminal_column, terminal_row);
 	if (++terminal_column == VGA_WIDTH) {
 		terminal_column = 0;
