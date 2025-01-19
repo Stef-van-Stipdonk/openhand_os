@@ -8,7 +8,7 @@
 
 # Ignore the build directory
 sysroot/
-
+isodir/
 # Ignore temporary files and editor backups
 *.swp
 *.swo
