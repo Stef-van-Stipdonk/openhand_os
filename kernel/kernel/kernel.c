@@ -4,7 +4,6 @@
 #include <stdint.h>
 #include <stdnoreturn.h>
 #include <string.h>
-#include <stack_protector.h>
 
 __attribute__((noinline))
 void protected(char *arg) {
@@ -18,6 +17,6 @@ void protected(char *arg) {
 void kernel_main(void) {
 	terminal_initialize();
 	
-	protected("aaaa");
+	protected("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 	printf("Hello, kernel World!\n");
 }
