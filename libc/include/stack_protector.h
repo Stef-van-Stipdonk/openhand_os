@@ -7,7 +7,7 @@ extern "C" {
 
 #include <stdint.h>
 
-uintptr_t __stack_chk_guard;
+extern uintptr_t __stack_chk_guard;
 
 __attribute__((noreturn)) void __stack_chk_fail(void);
 

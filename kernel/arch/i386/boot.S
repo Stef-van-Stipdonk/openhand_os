@@ -19,6 +19,11 @@ stack_bottom:
 .skip 16384 # 16 KiB
 stack_top:
 
+.section .rodata
+.global __stack_chk_guard
+__stack_chk_guard:
+	.long 0xDEADBEEF
+
 # The kernel entry point.
 .section .text
 .global _start
