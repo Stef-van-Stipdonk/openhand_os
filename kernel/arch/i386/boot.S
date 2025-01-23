@@ -19,10 +19,10 @@ stack_bottom:
 .skip 16384 # 16 KiB
 stack_top:
 
-.section canary
+.section .rodata
 .global __stack_chk_guard
 __stack_chk_guard:
-	.long 0 # Reserve 4 bytes
+	.long 0xDEADBEEF
 
 # The kernel entry point.
 .section .text
@@ -30,8 +30,6 @@ __stack_chk_guard:
 .type _start, @function
 _start:
 	movl $stack_top, %esp
-
-	movl %eax, __stack_chk_guard
 
 	# Call the global constructors.
 	call _init
