@@ -16,5 +16,10 @@ The entire system consisting of a page directory and page tables represents a li
 
 "Translation of a virtual address into a physical address first involves dividing the virtual address into three parts: the most significant 10 bits (bits 22-31) specify the index of the page directory entry, the next 10 bits (bits 12-21) specify the index of the page table entry, and the least significant 12 bits (bits 0-11) specify the page offset. The then MMU walks through the paging structures, starting with the page directory, and uses the page directory entry to locate the page table. The page table entry is used to locate the base address of the physical page frame, and the page offset is added to the physical base address to produce the physical address. If translation fails for some reason (entry is marked as not present, for example), then the processor issues a page fault." <sup>[1]</sup>
 
+References to stuff that helped create an understanding:
+- [stackoverflow - how-does-x86-paging-work](https://stackoverflow.com/questions/18431261/how-does-x86-paging-work)
 
+
+
+### References:
 [1] https://wiki.osdev.org/Paging#MMU

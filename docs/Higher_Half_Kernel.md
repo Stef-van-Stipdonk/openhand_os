@@ -1,0 +1,2 @@
+A higher half kernel is a kernel that is mapped to the higher half of the virtual address space, despite being loaded to the lower half of the physical address space.
+
