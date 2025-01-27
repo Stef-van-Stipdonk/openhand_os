@@ -3,7 +3,7 @@ A x86 aka 32-bit operating system.\
 This is a personal project, and as such is in a continues state of disrepair...\
 It is decently tested and documented, but for personal use, so your mileage may vary.
 
-See the [Wiki](https://github.com/Stef-van-Stipdonk/openhand_os/wiki) for more documentation.
+See the [Wiki](https://github.com/Stef-van-Stipdonk/openhand_os/wiki) or the local submodule for more documentation.
 
 ## List of supported stuff (Not ordered in any sense of the word...)
  - Stack smashing protection using canaries (currently using 0xDEADBEEF, should add support for runtime canary generation)
