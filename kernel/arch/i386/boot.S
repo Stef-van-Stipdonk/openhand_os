@@ -12,7 +12,7 @@
 .long FLAGS
 .long CHECKSUM
 
-# Canary generation
+# Canary Setup
 .section .rodata
 .global __stack_chk_guard
 __stack_chk_guard:
