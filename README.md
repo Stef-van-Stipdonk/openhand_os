@@ -1,5 +1,5 @@
 # Openhand_os 🤙
-A x86 aka 32-bit operating system.\
+A x86 aka IA-32/i386 operating system.\
 This is a personal project, and as such is in a continues state of disrepair...\
 It is decently tested and documented, but for personal use, so your mileage may vary.
 
