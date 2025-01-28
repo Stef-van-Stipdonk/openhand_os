@@ -40,25 +40,25 @@ boot_page_table1:
 _start:
 	movl $(boot_page_table1 - 0xC0000000), %edi # Physical address of boot_page_table1
 	movl $0, %esi # First map address is 0
-	movl $1023, %ecx
+	movl $1023, %ecx # Amount of page tables
 
 1:
 	cmpl $_kernel_start, %esi
-	jl 2f
+	jl map_page_table
 	cmpl $(_kernel_end - 0xC0000000), %esi
-	jge 3f
+	jge base_setup 
 
 	movl %esi, %edx
 	orl $0x003, %edx
 	movl %edx, (%edi)
 
-2:
+map_page_table:
 	addl $4096, %esi
 	addl $4, %edi
 
 	loop 1b
 
-3:
+base_setup:
 	movl $(0x000B8000 | 0x003), boot_page_table1 - 0xC0000000 + 1023 * 4
 	movl $(boot_page_table1 - 0xC0000000 + 0x003), boot_page_directory - 0xC0000000 + 0
 	movl $(boot_page_table1 - 0xC0000000 + 0x003), boot_page_directory - 0xC0000000 + 768 * 4
@@ -71,12 +71,12 @@ _start:
 	orl $0x80010000, %ecx
 	movl %ecx, %cr0
 
-	lea 4f, %ecx
+	lea transfer_control_to_kernel, %ecx
 	jmp *%ecx
 
 .section .text
 
-4:
+transfer_control_to_kernel:
 	movl $0, boot_page_directory + 0
 	movl %cr3, %ecx
 	movl %ecx, %cr3
