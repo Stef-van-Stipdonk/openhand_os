@@ -6,7 +6,8 @@ It is decently tested and documented, but for personal use, so your mileage may 
 See local docs for sporadic documentation for later reference.
 
 ## List of supported stuff (Not ordered in any sense of the word...)
- - Stack smashing protection using canaries (currently using 0xDEADBEEF, should add support for runtime canary generation)
+ - Stack smashing protection using canaries (currently using 0xDEADBEEF, should add support for runtime canary generation).
+ - Now in NASM asm syntax, instead of AT&T syntax.
  - Paging, allowing each process to see the full virtual address space, without being required to actually have it.
 
 ### Naming
