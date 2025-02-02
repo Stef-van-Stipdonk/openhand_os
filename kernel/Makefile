@@ -48,7 +48,7 @@ LINK_LIST = \
     $(ARCHDIR)/crtn.o
 
 .PHONY: all clean install install-headers install-kernel
-.SUFFIXES: .o .c .asm
+.SUFFIXES: .o .c .nasm
 
 AS      = nasm
 
@@ -70,8 +70,8 @@ $(ARCHDIR)/crtbegin.o $(ARCHDIR)/crtend.o:
 .c.o:
 	$(CC) -MD -c $< -o $@ -std=gnu11 $(CFLAGS) $(CPPFLAGS)
 
-# Assemble .asm files with NASM
-.asm.o:
+# Assemble .nasm files with NASM
+.nasm.o:
 	$(AS) $(ASFLAGS) $< -o $@
 
 clean:

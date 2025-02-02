@@ -70,7 +70,7 @@ endif
 # In case you want to pass include paths or definitions to NASM, you can do:
 # ASFLAGS += -I include/ -D SOMEDEFINE=1
 
-.SUFFIXES: .o .libk.o .c .asm
+.SUFFIXES: .o .libk.o .c .nasm
 
 all: $(BINARIES)
 
@@ -90,12 +90,12 @@ libk.a: $(LIBK_OBJS)
 	$(CC) -MD -c $< -o $@ -std=gnu11 $(LIBK_CFLAGS) $(LIBK_CPPFLAGS)
 
 #
-# Rules to assemble .asm files with NASM
+# Rules to assemble .nasm files with NASM
 #
-.asm.o:
+.nasm.o:
 	$(AS) $(ASFLAGS) $< -o $@
 
-.asm.libk.o:
+.nasm.libk.o:
 	$(AS) $(ASFLAGS) $< -o $@
 
 #
