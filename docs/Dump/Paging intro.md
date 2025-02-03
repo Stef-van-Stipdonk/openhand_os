@@ -1,3 +1,4 @@
+#Paging 
 Paging is a way by which an operating can provide each process a full virtual address space without actually requiring the full amount of physical memory to be available or present.
 
 The x86 processors support 32-bit virtual addresses and 4-GiB virtual address spaces.

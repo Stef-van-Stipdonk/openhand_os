@@ -1,0 +1,1 @@
+An entry in a descriptor table. These are a binary data structure that tells the CPU the attributes of a given segment.
