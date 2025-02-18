@@ -1,1 +1,0 @@
-A register of your CPU that refers to a segment for a particular purpose (CS, DS, SS, ES) or for general use (FS, GS).

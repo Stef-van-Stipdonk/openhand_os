@@ -1,3 +1,0 @@
-#GDT 
-
-Global Descriptor Table
