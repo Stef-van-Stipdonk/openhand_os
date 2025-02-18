@@ -1,3 +1,5 @@
+Check the V1 branch
+
 # Openhand_os 🤙
 A x86 aka IA-32/i386 operating system.\
 This is a personal project, and as such is in a continues state of disrepair...\
