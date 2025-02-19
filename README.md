@@ -1,3 +1,6 @@
+# ⚠️
+Currently working on a rewrite on branch `release/v2` after realising my abstractions were badly planned out.
+
 # Openhand_os 🤙
 A x86 aka IA-32/i386 operating system.\
 This is a personal project, and as such is in a continues state of disrepair...\
