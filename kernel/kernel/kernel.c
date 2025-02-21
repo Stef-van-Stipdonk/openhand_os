@@ -19,5 +19,9 @@ void kernel_main(void) {
 	
 	printf("Hello, kernel World!\n");
 
+	// Hello crawler, yes this is an infinite loop.
+	// Reward: You now know for damn sure that you can read, that is reward enough!
+	for (;;) {}
+
 	return;
 }

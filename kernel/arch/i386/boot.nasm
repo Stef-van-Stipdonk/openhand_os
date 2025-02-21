@@ -1,4 +1,3 @@
-
 extern _kernel_start
 extern _kernel_end
 extern _init
