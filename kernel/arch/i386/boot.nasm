@@ -1,27 +1,44 @@
+
+extern _kernel_start
+extern _kernel_end
+extern _init
+extern kernel_main
+extern printf
+
+;
+; Set multiboot constants
+;
 AFLAG 		equ 1 << 0
 MEMINFO		equ 1 << 1
 FLAGS		equ AFLAG | MEMINFO
 MAGIC		equ 0x1BADB002
 CHECKSUM	equ -(MAGIC + FLAGS)
 
+;
 ; Declare a header as in the Multiboot Standard
+;
 section .multiboot.data align=4
     dd MAGIC
     dd FLAGS
     dd CHECKSUM
 
-extern _kernel_start
-extern _kernel_end
-extern _init
-extern kernel_main
+;
+;
+;
+section .data
+	fatal_fault_message: db 'Please reboot, a fatal fault occured.', 0
 
+;
 ; Canary Setup
+;
 section .rodata
     global __stack_chk_guard
 __stack_chk_guard:
     dd 0xDEADBEEF
 
+;
 ; Reserve a stack for the initial thread
+;
 section .bootstrap_stack align=16 type=bss
 stack_bottom:
     resb 16384 ; 16 KiB
@@ -34,7 +51,9 @@ boot_page_table1:
     resb 4096
 ; Add further page tables if kernel grows beyond 3 MiB
 
+;
 ; The kernel entry point
+;
 section .multiboot.text
     global _start
     _start:
@@ -91,6 +110,9 @@ transfer_control_to_kernel:
 
         ; Hang if kernel_main unexpectedly returns
         cli
+	push fatal_fault_message
+	call printf
+	add esp, 4
 .hang:
         hlt
         jmp .hang

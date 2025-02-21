@@ -17,6 +17,7 @@ void protected(char *arg) {
 void kernel_main(void) {
 	terminal_initialize();
 	
-	protected("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 	printf("Hello, kernel World!\n");
+
+	return;
 }
