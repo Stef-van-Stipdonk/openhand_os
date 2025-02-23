@@ -12,8 +12,8 @@ SECTIONS
 	/* Note that we page-align the sections. */
 
 	_kernel_start = .;
-	.multiboot.data : {
-		*(.multiboot.data)
+	.multiboot_header : {
+		*(.multiboot_header)
 	}
 
 	.multiboot.text : {
