@@ -4,6 +4,7 @@
 #include <string.h>
 
 #include <kernel/tty.h>
+#include <stdio.h>
 
 #include "vga.h"
 
@@ -27,6 +28,8 @@ void terminal_initialize(void) {
 			terminal_buffer[index] = vga_entry(' ', terminal_color);
 		}
 	}
+
+	printf("[ Done ] Initialize Terminal\n");
 }
 
 void terminal_setcolor(uint8_t color) {
