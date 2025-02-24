@@ -5,6 +5,8 @@
 #include <stdnoreturn.h>
 #include <string.h>
 
+#include "../arch/i386/gdt.h"
+
 __attribute__((noinline))
 void protected(char *arg) {
     union {
@@ -16,7 +18,8 @@ void protected(char *arg) {
 
 void kernel_main(void) {
 	terminal_initialize();
-	
+	init_gdt();
+
 	printf("Hello, kernel World!\n");
 
 	// Hello crawler, yes this is an infinite loop.

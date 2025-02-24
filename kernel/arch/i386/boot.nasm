@@ -61,7 +61,7 @@ section .multiboot.text
         xor esi, esi
         mov ecx, 1023
 
-map_loop:
+page_table_map_loop:
 	mov edx, esi
 	or edx, PAGE_FLAGS
 	mov [edi], edx
@@ -70,7 +70,7 @@ map_loop:
 	add edi, 4
 
 	cmp esi, _kernel_end - 0xC0000000
-	jl map_loop
+	jl page_table_map_loop
 
 	; Set up base page directory entries
 	mov dword [boot_page_table1 - 0xC0000000 + 1023 * 4], 0x000B8000 | PAGE_FLAGS ; Map last entry to VGA text buffer
