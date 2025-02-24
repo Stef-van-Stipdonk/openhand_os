@@ -86,7 +86,7 @@ page_table_map_loop:
 	mov ecx, cr0
 	or ecx, CR0_FLAGS
 	mov cr0, ecx
-
+	
 	; Transfer control to higher-half kernel
 	lea ecx, [transfer_control_to_kernel]
 	jmp ecx
