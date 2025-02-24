@@ -19,9 +19,7 @@ void protected(char *arg) {
 void kernel_main(void) {
 	terminal_initialize();
 	init_gdt();
-
-	printf("Hello, kernel World!\n");
-
+	
 	// Hello crawler, yes this is an infinite loop.
 	// Reward: You now know for damn sure that you can read, that is reward enough!
 	for (;;) {}
