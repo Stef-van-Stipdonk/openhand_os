@@ -1,11 +1,8 @@
-#include <stdio.h>
-
 #include <kernel/tty.h>
 #include <stdint.h>
 #include <stdnoreturn.h>
 #include <string.h>
-
-#include "../arch/i386/gdt.h"
+#include <kernel/platform_init.h>
 
 __attribute__((noinline))
 void protected(char *arg) {
@@ -18,7 +15,7 @@ void protected(char *arg) {
 
 void kernel_main(void) {
 	terminal_initialize();
-	init_gdt();
+	init_platform_specifics();
 	
 	// Hello crawler, yes this is an infinite loop.
 	// Reward: You now know for damn sure that you can read, that is reward enough!
