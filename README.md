@@ -10,6 +10,7 @@ See local docs for sporadic documentation for later reference.
  - Now using NASM, instead of GAS.
  - Paging, allowing each process to see the full virtual address space, without being required to actually have it.
  - Global Descriptor Table
+ - Interupt Descriptor Table
 
 ### Naming
 The name of the OS is in reference to a handposition in climbing... the openhand crimp.
