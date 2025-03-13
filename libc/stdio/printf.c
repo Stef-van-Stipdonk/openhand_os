@@ -1,6 +1,7 @@
 #include <limits.h>
 #include <stdbool.h>
 #include <stdarg.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -61,6 +62,24 @@ int printf(const char* restrict format, ...) {
 			if (!print(str, len))
 				return -1;
 			written += len;
+		} else if (*format == 'i') {
+			format++;
+			int number = va_arg(parameters, int);
+			char str[250];
+			uint8_t len = 0;
+			while (number != 0) {
+				int tmp = number % 10;
+				str[len++] = tmp - '0';
+				number /= 10;
+			}
+
+			str[len] = '\0';
+
+			if (!print(str, len))
+				return -1;
+
+			written += len;
+
 		} else {
 			format = format_begun_at;
 			size_t len = strlen(format);
