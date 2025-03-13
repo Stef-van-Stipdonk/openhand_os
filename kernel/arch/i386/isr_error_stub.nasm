@@ -4,13 +4,17 @@ global isr_stub_table
 
 %macro isr_err_stub 1
 isr_stub_%+%1:
+	push %1
 	call exception_handler
+	add esp, 4
 	iret
 %endmacro
 
 %macro isr_no_err_stub 1
 isr_stub_%+%1:
+	push %1
 	call exception_handler
+	add esp, 4
 	iret
 %endmacro
 
